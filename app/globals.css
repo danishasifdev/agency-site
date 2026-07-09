@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf8f5;
+  --foreground: #14110f;
+  --accent: #c17f3e;
+  --accent-soft: #f0e4d4;
+  --ink: #14110f;
+  --font-display:
+    "Iowan Old Style", "Palatino Linotype", Georgia, "Times New Roman", serif;
+  --font-text:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-text);
+  --font-serif: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.tracking-tightest {
+  letter-spacing: -0.03em;
+}
+
+/* ---------- Liquid glass system ---------- */
+/* Light glass: for panels sitting on the cream background */
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.9) inset,
+    0 8px 24px rgba(20, 17, 15, 0.05);
+}
+
+/* Dark glass: for panels sitting on dark/ink backgrounds */
+.glass-dark {
+  background: rgba(20, 17, 15, 0.72);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(250, 248, 245, 0.14);
+  box-shadow:
+    0 1px 1px rgba(250, 248, 245, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Pill-shaped glass badge with a slow shimmering specular sweep */
+.glass-pill {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.4) inset,
+    0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.glass-pill::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.9) 45%,
+    rgba(231, 173, 111, 0.6) 50%,
+    rgba(255, 255, 255, 0.9) 55%,
+    transparent 80%
+  );
+  background-size: 250% 250%;
+  animation: glass-sheen 6s ease-in-out infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+@keyframes glass-sheen {
+  0% {
+    background-position: 200% 0%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.pill-link {
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+.pill-link:hover {
+  opacity: 0.65;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ---------- Marquee (testimonials) ---------- */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee-scroll 38s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ---------- WhatsApp-style floating button pulse ---------- */
+@keyframes wa-pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.wa-pulse-ring {
+  animation: wa-pulse-ring 2.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+
+@keyframes wa-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+.wa-float {
+  animation: wa-float 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
