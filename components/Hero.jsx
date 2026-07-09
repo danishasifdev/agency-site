@@ -94,29 +94,31 @@ export default function Hero() {
       </motion.div>
 
       {/* Stats Panel: Replaced loader positioning directly */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 3, ease: [0.22, 1, 0.36, 1] }}
-        className="lg:absolute inset-0 z-10 lg:flex flex-col items-center justify-end pb-10 md:pb-20 pointer-events-none hidden"
-      >
+      <div className="lg:absolute inset-0 z-10 lg:flex flex-col items-center justify-end pb-10 md:pb-20 pointer-events-none hidden">
         <div className="grid w-full max-w-4xl grid-cols-2 md:gap-6 gap-4 px-8 pointer-events-auto sm:grid-cols-4">
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="font-serif text-2xl tracking-tightest text-white md:text-4xl">
-                {beginCounting ? (
-                  <Counter value={stat.value} suffix={stat.suffix} />
-                ) : (
-                  <span>0{stat.suffix}</span>
-                )}
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 3, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="text-center">
+                <div className="font-serif text-2xl tracking-tightest text-white md:text-4xl">
+                  {beginCounting ? (
+                    <Counter value={stat.value} suffix={stat.suffix} />
+                  ) : (
+                    <span>0{stat.suffix}</span>
+                  )}
+                </div>
+                <p className="mt-1 text-xs uppercase tracking-wider text-white/50">
+                  {stat.label}
+                </p>
               </div>
-              <p className="mt-1 text-xs uppercase tracking-wider text-white/50">
-                {stat.label}
-              </p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

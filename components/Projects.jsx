@@ -33,38 +33,40 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
-          className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2"
-        >
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2">
           {PROJECTS.map((project) => (
-            <motion.div key={project.id} variants={reveal}>
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group block overflow-hidden rounded-3xl border border-black/8 bg-white transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(20,17,15,0.1)]"
-              >
-                <WorkThumbnail
-                  project={project}
-                  className="rounded-none border-none transition-transform duration-500 group-hover:scale-[1.02]"
-                />
-                <div className="flex items-center justify-between p-5">
-                  <div>
-                    <span className="font-medium">{project.name}</span>
-                    <p className="mt-0.5 text-sm text-black/50">
-                      {project.category}
-                    </p>
+            <motion.div
+              key={project.id}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{ show: { transition: { staggerChildren: 0.1 } } }}
+            >
+              <motion.div variants={reveal}>
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="group block overflow-hidden rounded-3xl border border-black/8 bg-white transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(20,17,15,0.1)]"
+                >
+                  <WorkThumbnail
+                    project={project}
+                    className="rounded-none border-none transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                  <div className="flex items-center justify-between p-5">
+                    <div>
+                      <span className="font-medium">{project.name}</span>
+                      <p className="mt-0.5 text-sm text-black/50">
+                        {project.category}
+                      </p>
+                    </div>
+                    <span className="text-sm font-medium text-[#c17f3e] opacity-0 transition-opacity group-hover:opacity-100">
+                      View case study &rsaquo;
+                    </span>
                   </div>
-                  <span className="text-sm font-medium text-[#c17f3e] opacity-0 transition-opacity group-hover:opacity-100">
-                    View case study &rsaquo;
-                  </span>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
