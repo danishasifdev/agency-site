@@ -6,7 +6,7 @@ import Counter from "./Counter";
 
 export default function Stats() {
   return (
-    <section className="relative w-full px-6 pb-20 pt-4">
+    <section className="relative w-full px-6 pb-20 pt-4 lg:hidden">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
