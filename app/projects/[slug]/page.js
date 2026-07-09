@@ -18,7 +18,10 @@ export default function ProjectDetailPage() {
     return (
       <main className="flex min-h-screen w-full flex-col items-center justify-center px-6 text-center">
         <h1 className="font-serif text-4xl">Project not found</h1>
-        <Link href="/projects" className="mt-4 pill-link text-[#c17f3e] underline">
+        <Link
+          href="/projects"
+          className="mt-4 pill-link text-[#c17f3e] underline"
+        >
           ← Back to all projects
         </Link>
       </main>
@@ -49,7 +52,9 @@ export default function ProjectDetailPage() {
             <h1 className="mt-2 font-serif text-5xl tracking-tightest md:text-6xl">
               {project.name}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-black/60">{project.summary}</p>
+            <p className="mt-4 max-w-2xl text-lg text-black/60">
+              {project.summary}
+            </p>
           </motion.div>
 
           <motion.div
@@ -70,7 +75,9 @@ export default function ProjectDetailPage() {
           >
             <div className="md:col-span-2">
               <h2 className="font-serif text-2xl">The project</h2>
-              <p className="mt-3 leading-relaxed text-black/65">{project.description}</p>
+              <p className="mt-3 leading-relaxed text-black/65">
+                {project.description}
+              </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -90,7 +97,9 @@ export default function ProjectDetailPage() {
               <div className="mt-4 space-y-4">
                 {project.results.map((r) => (
                   <div key={r.label}>
-                    <div className="font-serif text-2xl text-[#c17f3e]">{r.value}</div>
+                    <div className="font-serif text-2xl text-[#c17f3e]">
+                      {r.value}
+                    </div>
                     <div className="text-sm text-black/55">{r.label}</div>
                   </div>
                 ))}
@@ -107,7 +116,8 @@ export default function ProjectDetailPage() {
           >
             <h3 className="font-serif text-3xl">Want something like this?</h3>
             <p className="mx-auto mt-2 max-w-md text-[#faf8f5]/65">
-              Tell us what you're building and we'll figure out the shape of it together.
+              Tell us what you're building and we'll figure out the shape of it
+              together.
             </p>
             <Link
               href="/#contact"

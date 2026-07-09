@@ -91,7 +91,7 @@ export default function ProjectsIndexPage() {
         </motion.div>
 
         <div className="mt-16 text-center">
-          <Link href="/#contact" className="pill-link text-black/60 underline">
+          <Link href="/" className="pill-link text-black/60 underline">
             ← Back to {AGENCY.name}
           </Link>
         </div>
